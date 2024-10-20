@@ -1,4 +1,16 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, HttpStatus } from '@nestjs/common';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@Controller('app')
-export class AppController {}
+@ApiTags('Home')
+@Controller('/')
+export class AppController {
+  @Get('/')
+  @ApiResponse({
+    status: HttpStatus.OK,
+    //headers: swagger.response.headers.global,
+    type: Object,
+  })
+  getHome(): any {
+    //return { welcome: config.project.name };
+  }
+}
