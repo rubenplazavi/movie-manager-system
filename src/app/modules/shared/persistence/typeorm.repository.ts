@@ -4,11 +4,13 @@ import {
   DeleteResult,
   EntitySchema,
   EntityTarget,
+  FindManyOptions,
   FindOneOptions,
   Repository,
   UpdateResult,
 } from 'typeorm';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
+import { TypeOrmQueryBuilder } from './typeorm-querybuilder';
 
 /**
  * Método Abstracto para implermentar un patron repositorio que tiende a desacoplar el acceso a datos, pudiendo ser fácilmente escalable
@@ -52,4 +54,13 @@ export abstract class TypeOrmRepository<T> {
   async softDeleteEntity(id: string): Promise<DeleteResult> {
     return this.repository.softDelete(id);
   }
+	protected createTypeOrmQueryBuilder(): TypeOrmQueryBuilder<T> {
+
+		const alias = this.repository.metadata.tableName;
+
+		const queryBuilder = this.repository.createQueryBuilder(alias);
+
+		return new TypeOrmQueryBuilder<T>(queryBuilder, alias);
+	}
+
 }
