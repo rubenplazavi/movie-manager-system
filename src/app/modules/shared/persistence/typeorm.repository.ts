@@ -54,6 +54,7 @@ export abstract class TypeOrmRepository<T> {
   async softDeleteEntity(id: string): Promise<DeleteResult> {
     return this.repository.softDelete(id);
   }
+  
 	protected createTypeOrmQueryBuilder(): TypeOrmQueryBuilder<T> {
 
 		const alias = this.repository.metadata.tableName;

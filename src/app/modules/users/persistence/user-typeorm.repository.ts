@@ -3,7 +3,7 @@ import { TypeOrmRepository } from "../../shared/persistence/typeorm.repository";
 import { UserEntity } from "./user.entity";
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { IUserRepository } from '../interfaces/user-repository.interface';
-import { SelectOptions } from '../../shared/types/find-options';
+import { SelectOptions } from '../../shared/types/find-options.type';
 
 export class UserRepository extends TypeOrmRepository<UserEntity> implements IUserRepository{
     protected entitySchema(): EntityTarget<UserEntity> {
