@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   postgres:
-    container_name: movie-reservation-system
+    container_name: movies-container-db
     image: "postgres:alpine"
     ports:
       - "5432:5432"
@@ -11,51 +11,30 @@ services:
       POSTGRES_USER: 'movies'
       POSTGRES_PASSWORD: 'movies'
     volumes:
-      - ../../artifacts/postgres:/var/lib/postgresql/data/
+      - ../../artifacts/postgres:/var/lib/postgresql/new-data/
     networks:
       - postgres
-
-#  pgadmin:
-#    container_name: movies-pgadmin
-#    image: "dpage/pgadmin4"
-#    environment:
-#      PGADMIN_DEFAULT_EMAIL: 'movies@movies.es'
-#      PGADMIN_DEFAULT_PASSWORD: 'movies'
-#    ports:
-#      - "5050:80"
-#    networks:
-#      - postgres
-
-#  app:
-#    build: .
-#    container_name: nestjs_app
-#    environment:
-#      DATABASE_HOST: db
-#      DATABASE_PORT: 5432
-#      DATABASE_USER: nestuser
-#      DATABASE_PASSWORD: nestpassword
-#      DATABASE_NAME: nestdb
-#    ports:
-#      - "3000:3000"
-#    depends_on:
-#      - db
-
-# app:
-#     build: .
-#     container_name: nestjs_app
-#     environment:
-#       DATABASE_HOST: postgres-db
-#       DATABASE_PORT: 5432
-#       DATABASE_USER: movies
-#       DATABASE_PASSWORD: movies
-#       DATABASE_NAME: moviesdb
-#     ports:
-#       - "3000:3000"
-#     depends_on:
-#       - postgres
-#     networks:
-#       - postgres
 
 networks:
   postgres:
     driver: bridge
+
+# version: '3.9'
+
+# services:
+#   postgres:
+#     container_name: movie-reservation-system
+#     image: "postgres:alpine"
+#     ports:
+#       - "5432:5432"
+#     environment:
+#       POSTGRES_USER: 'movies'
+#       POSTGRES_PASSWORD: 'movies'
+#     volumes:
+#       - ../../artifacts/postgres:/var/lib/postgresql/data/
+#     networks:
+#       - postgres
+
+# networks:
+#   postgres:
+#     driver: bridge
