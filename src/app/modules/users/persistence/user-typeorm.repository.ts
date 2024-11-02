@@ -19,7 +19,7 @@ export class UserRepository extends TypeOrmRepository<UserEntity> implements IUs
 
 	//! Mirar FindOneOptions typeOrm
 	async findOne(options: FindOneOptions){
-		return this.findOne(options);
+		return this.findOneEntity(options);
 	}
 
 	async update(id: string, partialUser: QueryDeepPartialEntity<UserEntity>): Promise<UpdateResult>{
