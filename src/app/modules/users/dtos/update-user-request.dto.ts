@@ -1,7 +1,7 @@
 import { PartialType } from "@nestjs/swagger";
-import { CreateUserDto } from "./create-user.dto";
+import { CreateUserRequestDto } from "./create-user-request.dto";
 
-export class UpdateUserDto extends PartialType(CreateUserDto) {
+export class UpdateUserRequestDto extends PartialType(CreateUserRequestDto) {
     //ToDo  poner campos que se quieran actualizar, el email parece que no se va a actualizar, solo password y nombre
   }
   

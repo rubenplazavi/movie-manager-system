@@ -2,7 +2,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { userPropertiesSwagger } from "../config/swagger/properties/users-properties.swagger";
 const {id, name, email } = userPropertiesSwagger;
 
-export class CreateUserResponse {
+export class CreatedUserResponse {
     @ApiProperty(id)
 	readonly id: string;
 
